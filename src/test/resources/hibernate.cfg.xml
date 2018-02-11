@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database Connection Settings -->
+        <!--<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/order</property>
+        <property name="connection.useSSL">false</property>
+        <property name="connection.serverTimezone">UTC</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">M@rek</property>
+
+        <!-- Connection Pool Size (built-in) -->
+        <property name="connection.pool.size">10</property>
+
+        <!-- SQL Dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Disable the second-level cache -->
+        <!--<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>-->
+        <property name="cache.provider_class">org.hibernate.cache.internal.NoCachingRegionFactory</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- Only validate database structure -->
+        <property name="hbm2ddl.auto">validate</property>
+
+        <!-- Mention here all the model classes along with their package name -->
+        <mapping class="mjuApps.hibernate.entity.Customer"/>
+        <mapping class="mjuApps.hibernate.entity.CustomerType"/>
+        <!--<mapping class="software.academy.hibernate.orders.entity.Address"/>-->
+        <!--<mapping class="software.academy.hibernate.orders.entity.Order"/>-->
+        <!--<mapping class="software.academy.hibernate.orders.entity.OrderItem"/>-->
+        <!--<mapping class="software.academy.hibernate.orders.entity.Product"/>-->
+
+    </session-factory>
+</hibernate-configuration>

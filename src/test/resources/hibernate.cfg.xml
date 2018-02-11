@@ -32,10 +32,7 @@
         <!-- Mention here all the model classes along with their package name -->
         <mapping class="mjuApps.hibernate.entity.Customer"/>
         <mapping class="mjuApps.hibernate.entity.CustomerType"/>
-        <!--<mapping class="software.academy.hibernate.orders.entity.Address"/>-->
-        <!--<mapping class="software.academy.hibernate.orders.entity.Order"/>-->
-        <!--<mapping class="software.academy.hibernate.orders.entity.OrderItem"/>-->
-        <!--<mapping class="software.academy.hibernate.orders.entity.Product"/>-->
+        <mapping class="mjuApps.hibernate.entity.Address"/>
 
     </session-factory>
 </hibernate-configuration>

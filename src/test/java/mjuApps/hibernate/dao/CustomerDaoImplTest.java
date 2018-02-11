@@ -1,5 +1,6 @@
 package mjuApps.hibernate.dao;
 
+import mjuApps.hibernate.entity.Address;
 import mjuApps.hibernate.entity.Customer;
 import mjuApps.hibernate.entity.CustomerType;
 import mjuApps.hibernate.exception.DatabaseException;
@@ -15,9 +16,11 @@ public class CustomerDaoImplTest {
         //given
         CustomerDao customerDao = new CustomerDaoImpl();
         //when
-        Customer customer = customerDao.findById(1);
+        Customer customer = customerDao.findById(8);
         //then
-        Assert.assertEquals("First name should be equal", "piesek",customer.getFirstName());
+        Assert.assertEquals("First name should be equal johny", "Dobry",customer.getFirstName());
+        Address address = customer.getAddress();
+        Assert.assertEquals("City name should be equal Miasto 10", "Miasto 10", address.getCity());
     }
 
     @Test

@@ -24,6 +24,10 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     private CustomerType type;
 
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
+
     public Customer() {
     }
 
@@ -36,6 +40,10 @@ public class Customer {
 
     public Integer getId() {
         return id;
+    }
+
+    public Address getAddress() {
+        return address;
     }
 
     public String getFirstName() {

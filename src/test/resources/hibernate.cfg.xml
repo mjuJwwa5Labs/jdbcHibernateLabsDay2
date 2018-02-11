@@ -33,6 +33,10 @@
         <mapping class="mjuApps.hibernate.entity.Customer"/>
         <mapping class="mjuApps.hibernate.entity.CustomerType"/>
         <mapping class="mjuApps.hibernate.entity.Address"/>
+        <mapping class="mjuApps.hibernate.entity.Product"/>
+        <mapping class="mjuApps.hibernate.entity.Order"/>
+        <mapping class="mjuApps.hibernate.entity.OrderStatus"/>
+        <mapping class="mjuApps.hibernate.entity.OrderItem"/>
 
     </session-factory>
 </hibernate-configuration>

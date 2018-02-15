@@ -5,7 +5,12 @@ import mjuApps.hibernate.entity.Order;
 import mjuApps.hibernate.exception.DatabaseException;
 import org.apache.log4j.Logger;
 import org.hibernate.*;
+import org.hibernate.exception.SQLGrammarException;
 
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class OrderDaoImpl implements OrderDao {
@@ -18,8 +23,18 @@ public class OrderDaoImpl implements OrderDao {
         Session session = null;
         try {
             session = sessionFactory.openSession();
-            Order order = session.find(Order.class, id);
+
+            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+            CriteriaQuery<Order> criteriaQuery = criteriaBuilder.createQuery(Order.class);
+            Root<Order> from = criteriaQuery.from(Order.class);
+            criteriaQuery.select(from).where(criteriaBuilder.equal(from.get("id"),id));
+            TypedQuery<Order> typedQuery = session.createQuery(criteriaQuery);
+
+            Order order = typedQuery.getSingleResult();
             return order;
+        } catch (SQLGrammarException e) {
+            logger.error("Error with Your SQL query while getting order" + id, e);
+            throw new DatabaseException("Error with Your SQL query while getting order" + id, e);
         } catch (HibernateException e) {
             logger.error("Error while finding order with id = " + id, e);
             throw new DatabaseException("Error while finding order with id = " + id, e);

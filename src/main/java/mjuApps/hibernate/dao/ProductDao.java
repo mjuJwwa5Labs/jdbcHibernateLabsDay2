@@ -13,4 +13,6 @@ public interface ProductDao {
 
     public List<Product> findByCategory(String category) throws DatabaseException;
 
+    public List<Product> findAllProducts() throws DatabaseException;
+
 }

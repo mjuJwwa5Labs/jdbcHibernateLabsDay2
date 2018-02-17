@@ -13,11 +13,17 @@ public class OrderItem implements Serializable {
     private Order order;
 
     @Id
-    @ManyToOne
     @JoinColumn(name = "product_id")
+    @ManyToOne
     private Product product;
 
     private Integer quantity;
 
     public OrderItem() {}
+
+    public OrderItem(Order order, Product product, Integer quantity) {
+        this.order = order;
+        this.product = product;
+        this.quantity = quantity;
+    }
 }
